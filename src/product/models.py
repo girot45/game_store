@@ -21,7 +21,8 @@ class Product(Base):
                               'Product.id_product',
                               ondelete='no action',
                               onupdate="cascade"
-                          )
+                          ),
+                          server_default='0'
                           )
     login_user = Column(String(50),
                         ForeignKey(
@@ -30,7 +31,6 @@ class Product(Base):
                             onupdate="cascade"
                         ),
                         nullable=False)
-    deleted = Column(Boolean, nullable=False, server_default='0')
 
     __table_args__ = (
         CheckConstraint(
