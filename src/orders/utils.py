@@ -1,4 +1,4 @@
-def improve_data_output_view(orders):
+def orders_improve_data_output_view(orders):
     res = []
     for order in orders:
         item = {

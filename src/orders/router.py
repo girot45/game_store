@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.database import get_async_session
 from src.orders.models import Transaction
 from src.orders.schemas import Order, GetOrdersResponse, NewOrder
-from src.orders.utils import improve_data_output_view
+from src.orders.utils import orders_improve_data_output_view
 from src.user.models import User
 
 router = APIRouter(
@@ -34,7 +34,7 @@ async def get_orders(
         )
         res_query = await session.execute(stmt)
         transactions = res_query.scalars()
-        answer = improve_data_output_view(transactions)
+        answer = orders_improve_data_output_view(transactions)
         return {
             "status": "success",
             "message": "All orders",

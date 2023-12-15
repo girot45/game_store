@@ -1,4 +1,4 @@
-def improve_data_output_view(products):
+def products_improve_data_output_view(products):
     res = []
     for product in products:
         item = {

@@ -6,7 +6,7 @@ from src.database import get_async_session
 from src.product.models import Product
 from src.product.schemas import InsertProduct, ProductsResponse, \
     ProductInfoResponse, PrductChange
-from src.product.utils import improve_data_output_view
+from src.product.utils import products_improve_data_output_view
 
 router = APIRouter(
     prefix="/product",
@@ -48,7 +48,7 @@ async def get_products(
         stmt = (select(Product))
         res = await session.execute(stmt)
         products_result = res.scalars()
-        answer = improve_data_output_view(products_result)
+        answer = products_improve_data_output_view(products_result)
         return {"status": "success", "data": answer}
     except Exception as e:
         await session.rollback()
