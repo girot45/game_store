@@ -2,7 +2,7 @@ from fastapi import Request, APIRouter
 
 
 router = APIRouter(
-    prefix="",
+    prefix="/home",
     tags=["Pages"]
 )
 
