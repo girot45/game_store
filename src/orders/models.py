@@ -1,7 +1,5 @@
-from sqlalchemy import create_engine, Column, Integer, String, \
+from sqlalchemy import Column, Integer, String, \
     DateTime, ForeignKey, CheckConstraint
-from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.sql import text
 
 from src.database import Base, metadata
@@ -27,9 +25,6 @@ class Transaction(Base):
     final_price = Column(Integer, nullable=False)
     trans_datetime = Column(DateTime,
                             server_default=text('CURRENT_TIMESTAMP'))
-
-    product = relationship('Product', back_populates='transactions')
-    user = relationship('User', back_populates='transactions')
 
     __table_args__ = (
         CheckConstraint(
